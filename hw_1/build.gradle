@@ -10,13 +10,18 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.guava:guava:${guavaVersion}")
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-allprojects {
-    ext {
-        guavaVersion = "31.1-jre"
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes "Main-Class": "HelloOtus"
     }
 }
 
