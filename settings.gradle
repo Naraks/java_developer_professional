@@ -1,2 +1,4 @@
 rootProject.name = 'java_developer_professional'
+include 'hw_1'
+include 'tdd'
 
